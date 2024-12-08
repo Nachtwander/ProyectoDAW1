@@ -1,0 +1,55 @@
+<div class="login-container">
+    <div class="login-card">
+      <h2>Registro</h2>
+      <form (ngSubmit)="onRegistro()" class="login-form" [formGroup]="registerForm">
+  
+        <!-- Campo de nombre -->
+        <div class="form-group">
+          <input type="text" formControlName="nombre" placeholder="Ingresa tu Nombre" 
+                 class="rounded-input" [class.invalid]="isNombreNull" />
+          <div *ngIf="isNombreNull" class="error">Por favor, ingresa un Nombre.</div>
+        </div>
+  
+        <!-- Campo de apellido -->
+        <div class="form-group">
+          <input type="text" formControlName="apellido" placeholder="Ingresa tu Apellido" 
+                 class="rounded-input" [class.invalid]="isApellidoNull" />
+          <div *ngIf="isApellidoNull" class="error">Por favor, ingresa un Apellido.</div>
+        </div>
+  
+        <!-- Campo de correo -->
+        <div class="form-group">
+          <input type="email" formControlName="correo" placeholder="Ingresa tu Correo Electrónico" 
+                 class="rounded-input" 
+                 [class.invalid]="isEmailRequired || isEmailInvalid" />
+          <div *ngIf="isEmailRequired" class="error">Por favor, ingresa un correo electrónico.</div>
+          <div *ngIf="isEmailInvalid" class="error">Por favor, ingresa un correo válido.</div>
+        </div>
+  
+        <!-- Campo de contraseña -->
+        <div class="form-group">
+          <input type="password" formControlName="contraseña" placeholder="Ingresa tu Contraseña" 
+                 class="rounded-input" [class.invalid]="isPasswordMinLengthInvalid" />
+          <div *ngIf="isPasswordMinLengthInvalid" class="error">La contraseña debe tener al menos 6 caracteres.</div>
+        </div>
+  
+        <!-- Botón de registro -->
+        <button type="submit" class="submit-button" 
+                [disabled]="isFormInvalid || disabled" 
+                [ngClass]="{ 'disabled': disabled }">
+          <div class="button-content">
+            <span *ngIf="!spinner">Registrar</span>
+            <span *ngIf="spinner" class="spinner"></span>
+          </div>
+        </button>
+  
+        <!-- Redirección al inicio de sesión -->
+        <div class="register-container">
+          <span class="span">¿Ya tienes una cuenta?</span>
+          <span class="spanRedirect" (click)="toLogin()">Ingresa Ahora</span>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

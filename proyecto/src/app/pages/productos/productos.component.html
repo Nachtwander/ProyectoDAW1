@@ -1,0 +1,118 @@
+<div class="container">
+  <h1>Gestión de Productos</h1>
+
+  <!-- Filtros -->
+  <div class="filters">
+    <input 
+      type="text" 
+      placeholder="Buscar por nombre" 
+      [(ngModel)]="searchName" 
+      (input)="onFilterChange()" 
+    />
+    <select 
+      [(ngModel)]="searchCategory" 
+      (change)="onFilterChange()"
+    >
+      <option value="">Todas las categorías</option>
+      <option *ngFor="let category of categories" [value]="category.id">
+        {{ category.nombre }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Botón para agregar producto -->
+  <button class="add-product-btn" (click)="onAddProduct()">Agregar Producto</button>
+
+  <!-- Lista de productos -->
+  <div class="product-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Marca</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>{{ product.nombre }}</td>
+          <td>{{ getCategoryName(product.categoria) }}</td>
+          <td>\${{ product.precio }}</td>
+          <td>{{ product.cantidad }}</td>
+          <td>{{ product.marca }}</td>
+          <td>
+            <button (click)="onEditProduct(product)">Editar</button>
+            <button (click)="onDeleteProduct(product.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal para agregar/editar producto -->
+  <div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+      <h2>{{ editingProduct ? 'Editar Producto' : 'Agregar Producto' }}</h2>
+
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input 
+          id="nombre" 
+          [(ngModel)]="formProduct.nombre" 
+          type="text" 
+          placeholder="Nombre del producto" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="categoria">Categoría:</label>
+        <select 
+          id="categoria" 
+          [(ngModel)]="formProduct.categoria"
+        >
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input 
+          id="precio" 
+          [(ngModel)]="formProduct.precio" 
+          type="number" 
+          placeholder="Precio del producto" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad:</label>
+        <input 
+          id="cantidad" 
+          [(ngModel)]="formProduct.cantidad" 
+          type="number" 
+          placeholder="Cantidad disponible" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="marca">Marca:</label>
+        <input 
+          id="marca" 
+          [(ngModel)]="formProduct.marca" 
+          type="text" 
+          placeholder="Marca del producto" 
+        />
+      </div>
+
+      <div class="modal-actions">
+        <button (click)="onCloseModal()">Cancelar</button>
+        <button (click)="onSubmitProduct()">{{ editingProduct ? 'Actualizar' : 'Agregar' }}</button>
+      </div>
+    </div>
+  </div>
+</div>

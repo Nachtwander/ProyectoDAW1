@@ -1,0 +1,158 @@
+/* Contenedor general centrado */
+.login-container {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background: linear-gradient(135deg, #6fb1fc, #add8e6);
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Tarjeta del formulario */
+  .login-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    text-align: center; /* Centra el texto dentro de la tarjeta */
+  
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333333;
+      font-weight: bold;
+    }
+  }
+  
+  /* Formulario centrado */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado uniforme entre los elementos */
+    align-items: center;
+  }
+  
+  /* Inputs con bordes redondeados */
+  .rounded-input {
+    width: 400px; /* Establece una anchura fija */
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .rounded-input:focus {
+    border-color: #6fb1fc;
+    box-shadow: 0px 0px 8px rgba(111, 177, 252, 0.5);
+  }
+  
+  /* Botón estilizado */
+  .submit-button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #6fb1fc;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .submit-button:hover {
+    background: #4a90e2;
+  }
+  
+  .submit-button:active {
+    background: #357abf;
+  }
+  
+  /* Grupo de formulario */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Asegura que todo esté bien alineado dentro de la tarjeta */
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .span{
+    font-size: 18px;
+    line-height: 26px;
+    color: black;
+    
+}
+
+.spanRedirect{
+    font-size: 18px;
+    line-height: 26px;
+    color: rgb(21, 18, 218);
+    margin-left: 10px;
+}
+  
+/* Inputs con validación */
+.invalid {
+    border-color: #e74c3c;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+  }
+  
+  /* Mensajes de error */
+  .error {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+    text-align: left;
+  }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .submit-button {
+    background-color: #3498db; /* Azul por defecto */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+  
+    &.disabled {
+      background-color: #d3d3d3; /* Gris cuando está deshabilitado */
+      cursor: not-allowed;
+    }
+  
+  }

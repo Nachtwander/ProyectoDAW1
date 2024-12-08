@@ -1,0 +1,40 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>Login</h2>
+        <form (ngSubmit)="onLogin()" class="login-form" [formGroup]="loginForm">
+            <!-- Campo de correo -->
+            <div class="form-group">
+                <input type="text" formControlName="correo" placeholder="Ingresa tu correo electrónico" class="rounded-input"
+                    [class.invalid]="loginForm.get('correo')?.invalid && loginForm.get('correo')?.touched" required />
+                <div *ngIf="loginForm.get('correo')?.invalid && loginForm.get('correo')?.touched" class="error">
+                    Por favor, ingresa un Correo Eletronico valido.
+                </div>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="form-group">
+                <input type="password" formControlName="contraseña" placeholder="Ingresa tu contraseña"
+                    class="rounded-input"
+                    [class.invalid]="loginForm.get('contraseña')?.invalid && loginForm.get('contraseña')?.touched"
+                    required />
+                <div *ngIf="loginForm.get('contraseña')?.invalid && loginForm.get('contraseña')?.touched" class="error">
+                    La contraseña debe tener al menos 6 caracteres.
+                </div>
+            </div>
+
+            <!-- Botón de inicio de sesión -->
+            <button type="submit" class="submit-button" [disabled]="isFormInvalid || disabled" [ngClass]="{ 'disabled': disabled }">
+                <div class="button-content">
+                    <span *ngIf="!spinner">Entrar</span>
+                    <span *ngIf="spinner" class="spinner"></span>
+                </div>
+            </button>
+
+            <!-- Redirección al registro -->
+            <div class="register-container">
+                <span class="span">¿No tienes cuenta?</span>
+                <span class="spanRedirect" (click)="toRegistro()">Regístrate ahora</span>
+            </div>
+        </form>
+    </div>
+</div>

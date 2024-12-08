@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background: linear-gradient(135deg, #6fb1fc, #add8e6);
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    
+  }
+  
+  /* Tarjeta del formulario */
+  .card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    text-align: center; /* Centra el texto dentro de la tarjeta */
+    
+    /* Flexbox para centrar contenido y añadir espaciado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espaciado uniforme entre los elementos */
+  
+    h2 {
+      font-size: 24px;
+      color: #333333;
+      font-weight: bold;
+    }
+    p {
+      font-size: 16px;
+      color: #333333;
+      font-weight: bold;
+    }
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #6fb1fc;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    gap: 20px; /* Espaciado uniforme entre los elementos */
+  }

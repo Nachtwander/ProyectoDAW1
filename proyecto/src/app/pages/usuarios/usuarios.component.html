@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="card">
+        <h2>Gestión de Usuarios</h2>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <input type="text" class="rounded-input" placeholder="Buscar por nombre" [(ngModel)]="searchName" />
+            <select class="rounded-input" [(ngModel)]="searchRole">
+                <option value="">Todos los roles</option>
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+            </select>
+
+            <!-- Botón para agregar usuario -->
+            <button class="button agregar" (click)="openForm()">
+                Agregar Usuario
+            </button>
+        </div>
+
+        <!-- Lista de usuarios -->
+        <div class="product-container">
+            <div *ngFor="let usuario of filteredUsuarios" class="items">
+                <div class="item-info">
+                    <h3>{{ usuario.nombre }}</h3>
+                    <p>{{ usuario.correo }}</p>
+                    <p>Rol: {{ usuario.rol }}</p>
+                    <p [class]="usuario.activo ? 'activo' : 'inactivo'">
+                        Estado: {{ usuario.activo ? 'Activo' : 'Inactivo' }}
+                    </p>
+                    <button class="button" (click)="openForm(usuario)">Editar</button>
+                    <button class="button eliminar" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario modal -->
+    <div class="modal" *ngIf="showForm">
+        <div class="modal-content">
+            <h3>{{ isEditing ? 'Editar Usuario' : 'Agregar Usuario' }}</h3>
+            <form (ngSubmit)="saveUsuario()">
+                <input type="text" [(ngModel)]="formUsuario.nombre" name="nombre" placeholder="Nombre" required />
+                <input type="email" [(ngModel)]="formUsuario.correo" name="correo" placeholder="Correo electrónico"
+                    required />
+                <select [(ngModel)]="formUsuario.rol" name="rol" required>
+                    <option value="" disabled>Seleccionar rol</option>
+                    <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                </select>
+                <label>
+                    <input type="checkbox" [(ngModel)]="formUsuario.activo" name="activo" />
+                    Activo
+                </label>
+                <div class="form-buttons">
+                    <button type="submit" class="button">Guardar</button>
+                    <button type="button" class="button eliminar" (click)="cancelar()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
